@@ -1,22 +1,26 @@
+// Playlist (no images)
 const playlist = [
-  { title: "Song 1", artist: "Artist 1", videoId: "M7lc1UVf-VE", thumbnail: "assets/thumb1.jpg" },
-  { title: "Song 2", artist: "Artist 2", videoId: "dQw4w9WgXcQ", thumbnail: "assets/thumb2.jpg" },
-  { title: "Song 3", artist: "Artist 3", videoId: "3JZ_D3ELwOQ", thumbnail: "assets/thumb3.jpg" }
+  { title: "Sky High", artist: "Electro Beats", videoId: "M7lc1UVf-VE" },
+  { title: "Lost in Sound", artist: "DJ Nova", videoId: "dQw4w9WgXcQ" },
+  { title: "City Nights", artist: "Lofi Dreams", videoId: "3JZ_D3ELwOQ" },
+  { title: "Pulse", artist: "Synth Vision", videoId: "aqz-KE-bpKQ" }
 ];
 
 const playlistContainer = document.getElementById("playlistContainer");
 let currentTrackIndex = 0;
 let player;
 
+// YouTube Player API
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: '100%',
     width: '100%',
-    videoId: playlist[currentTrackIndex].videoId
+    videoId: playlist[currentTrackIndex].videoId,
+    playerVars: { autoplay: 0, controls: 1, modestbranding: 1 }
   });
 }
 
-// Play track by index
+// Play track
 function playVideoByIndex(index) {
   if (player && playlist[index]) {
     currentTrackIndex = index;
@@ -26,54 +30,51 @@ function playVideoByIndex(index) {
   }
 }
 
-// Update track info
+// Update text info
 function updateTrackInfo(index) {
   const track = playlist[index];
   document.getElementById("trackTitle").innerText = track.title;
   document.getElementById("trackMeta").innerText = track.artist;
 }
 
-// Highlight active track
+// Highlight active
 function highlightActiveTrack() {
-  const items = document.querySelectorAll(".playlist-item");
-  items.forEach((item, idx) => {
-    if (idx === currentTrackIndex) item.classList.add("bg-pink-500/60");
-    else item.classList.remove("bg-pink-500/60");
+  document.querySelectorAll(".playlist-item").forEach((item, i) => {
+    item.classList.toggle("bg-pink-500/60", i === currentTrackIndex);
+    item.classList.toggle("scale-[1.02]", i === currentTrackIndex);
   });
 }
 
 // Inject playlist items
 playlist.forEach((track, index) => {
   const item = document.createElement("div");
-  item.className = "playlist-item flex items-center gap-3 p-3 bg-white/10 rounded-2xl hover:bg-pink-500/40 cursor-pointer transition duration-200";
+  item.className = "playlist-item p-3 rounded-xl hover:bg-pink-500/40 cursor-pointer transition duration-200";
   item.innerHTML = `
-    <img src="${track.thumbnail}" alt="${track.title}" class="w-16 h-16 rounded-xl object-cover shadow-md"/>
-    <div class="flex flex-col">
-      <h3 class="font-semibold text-white text-lg">${track.title}</h3>
-      <p class="text-slate-300 text-sm">${track.artist}</p>
-    </div>
+    <h3 class="font-semibold text-white text-lg">${track.title}</h3>
+    <p class="text-slate-300 text-sm">${track.artist}</p>
   `;
   item.addEventListener("click", () => playVideoByIndex(index));
   playlistContainer.appendChild(item);
 });
 
-// Initial load
+// Load first song
 updateTrackInfo(currentTrackIndex);
 highlightActiveTrack();
 
 // Controls
 document.getElementById("prevBtn").addEventListener("click", () => {
-  let index = currentTrackIndex - 1;
-  if (index < 0) index = playlist.length - 1;
-  playVideoByIndex(index);
+  currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+  playVideoByIndex(currentTrackIndex);
 });
 
 document.getElementById("nextBtn").addEventListener("click", () => {
-  let index = (currentTrackIndex + 1) % playlist.length;
-  playVideoByIndex(index);
+  currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+  playVideoByIndex(currentTrackIndex);
 });
 
 document.getElementById("playPauseBtn").addEventListener("click", () => {
-  if (player.getPlayerState() === 1) player.pauseVideo();
+  const state = player.getPlayerState();
+  if (state === 1) player.pauseVideo();
   else player.playVideo();
 });
+
