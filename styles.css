@@ -47,7 +47,10 @@
 }
 
 .modern-btn {
-  @apply text-3xl md:text-4xl p-4 md:p-6 bg-pink-500 hover:bg-pink-600 text-white rounded-full shadow-lg transition-transform transform hover:scale-110 focus:outline-none;
+  @apply text-5xl md:text-6xl p-6 md:p-8 bg-gradient-to-r from-pink-500 to-purple-500 
+         rounded-full shadow-2xl text-white hover:scale-110 hover:shadow-pink-400/50 
+         transition-transform duration-200 focus:outline-none;
 }
+
 
 
