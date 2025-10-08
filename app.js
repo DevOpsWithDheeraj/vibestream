@@ -37,7 +37,6 @@ function onPlayerStateChange(event) {
 // Fetch Playlist Info
 async function fetchPlaylist() {
   const feed = `https://api.allorigins.win/raw?url=https://www.youtube.com/feeds/videos.xml?playlist_id=${CONFIG.PLAYLIST_ID}`;
-
   try {
     const res = await fetch(feed);
     const text = await res.text();
@@ -54,20 +53,20 @@ async function fetchPlaylist() {
   }
 }
 
-// Render Playlist Thumbnails
+// Render Playlist Thumbnails (YouTube-style sidebar)
 function renderPlaylist() {
   const container = document.getElementById("playlistContainer");
   container.innerHTML = "";
   playlistItems.forEach((song) => {
     const div = document.createElement("div");
     div.className =
-      "group relative rounded-xl overflow-hidden shadow-lg cursor-pointer transform hover:scale-105 transition";
+      "group relative rounded-lg overflow-hidden shadow cursor-pointer flex items-center gap-3 transition hover:bg-white/10 p-2";
+
     div.innerHTML = `
-      <img src="${song.thumb}" class="w-full h-48 md:h-56 lg:h-64 object-cover group-hover:opacity-70 transition"/>
-      <div class="absolute inset-0 flex items-center justify-center text-center opacity-0 group-hover:opacity-100 transition">
-        <p class="text-sm font-semibold text-white bg-black/70 px-2 py-1 rounded">${song.title}</p>
-      </div>
+      <img src="${song.thumb}" class="w-20 h-14 object-cover rounded-md flex-shrink-0"/>
+      <p class="text-sm font-semibold text-white line-clamp-2">${song.title}</p>
     `;
+
     div.addEventListener("click", () => player.loadVideoById(song.videoId));
     container.appendChild(div);
   });
