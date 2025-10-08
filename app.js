@@ -9,8 +9,8 @@ let playlistItems = [];
 // Initialize YouTube Player
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
-    height: "360",
-    width: "640",
+    width: "100%",
+    height: "100%",
     playerVars: {
       listType: "playlist",
       list: CONFIG.PLAYLIST_ID,
@@ -26,19 +26,21 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
+// Player ready
 function onPlayerReady() {
   fetchPlaylist();
 }
 
+// Update title when video changes
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.PLAYING) updateTrackTitle();
 }
 
-// Fetch Playlist Info
+// Fetch Playlist from YouTube via CORS proxy
 async function fetchPlaylist() {
   const feed = `https://api.allorigins.win/raw?url=${encodeURIComponent(
-  `https://www.youtube.com/feeds/videos.xml?playlist_id=${CONFIG.PLAYLIST_ID}`
-)}`;
+    `https://www.youtube.com/feeds/videos.xml?playlist_id=${CONFIG.PLAYLIST_ID}`
+  )}`;
 
   try {
     const res = await fetch(feed);
@@ -50,16 +52,24 @@ async function fetchPlaylist() {
       videoId: e.querySelector("yt\\:videoId")?.textContent,
       thumb: `https://img.youtube.com/vi/${e.querySelector("yt\\:videoId")?.textContent}/hqdefault.jpg`,
     }));
+
     renderPlaylist();
   } catch (err) {
     console.warn("Failed to fetch playlist:", err);
+    // Optional fallback: hardcoded playlist if fetch fails
+    playlistItems = [
+      { title: "Song 1", videoId: "VIDEO_ID_1", thumb: "https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg" },
+      { title: "Song 2", videoId: "VIDEO_ID_2", thumb: "https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg" },
+    ];
+    renderPlaylist();
   }
 }
 
-// Render Playlist Thumbnails (YouTube-style sidebar)
+// Render playlist thumbnails (YouTube-style sidebar)
 function renderPlaylist() {
   const container = document.getElementById("playlistContainer");
   container.innerHTML = "";
+
   playlistItems.forEach((song) => {
     const div = document.createElement("div");
     div.className =
@@ -75,18 +85,13 @@ function renderPlaylist() {
   });
 }
 
-// Update Title
+// Update title and meta
 function updateTrackTitle() {
   const data = player.getVideoData();
   document.getElementById("trackTitle").innerText = data.title;
   document.getElementById("trackMeta").innerText = "Streaming from YouTube 🎵";
 }
 
-// Buttons
+// Player controls
 document.getElementById("playPauseBtn").onclick = () => {
-  const state = player.getPlayerState();
-  if (state === YT.PlayerState.PLAYING) player.pauseVideo();
-  else player.playVideo();
-};
-document.getElementById("nextBtn").onclick = () => player.nextVideo();
-document.getElementById("prevBtn").onclick = () => player.previousVideo();
+  const state = player.getPlay
