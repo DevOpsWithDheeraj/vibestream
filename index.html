@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VibeStream — English Superhits</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeStream 🎧</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css" />
-  <!-- favicon (optional) -->
-  <link rel="icon" href="assets/favicon.ico" />
 </head>
-<body>
-  <main class="app">
-    <div class="glass">
-      <header class="header">
-        <div class="brand">
-          <h1>VibeStream</h1>
-          <p class="tag">English Superhits — fresh playlist</p>
-        </div>
-        <div class="meta">Powered by YouTube</div>
-      </header>
+<body class="relative overflow-hidden text-white min-h-screen flex flex-col">
 
-      <div class="content">
-        <aside class="playlist" id="playlist">
-          <h2>Playlist</h2>
-          <ul id="tracks" class="tracks">
-            <!-- playlist items injected here -->
-          </ul>
-          <div class="playlist-footer">
-            <small id="last-update">Last updated: —</small>
-          </div>
-        </aside>
+  <!-- Animated Gradient Background -->
+  <div class="animated-bg"></div>
+  <img src="assets/bg-music.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80" />
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
 
-        <section class="player-area">
-          <div class="player-card">
-            <div id="player" class="player-iframe" aria-label="YouTube player container"></div>
-
-            <div class="track-info">
-              <h3 id="track-title">Select a song — Play</h3>
-              <p id="track-channel" class="channel"></p>
-            </div>
-
-            <div class="controls">
-              <button id="refreshBtn" class="cta big">Refresh playlist</button>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <footer class="footer">
-        <small>Built with ❤️ for music lovers • Place your bg at <code>assets/bg-music.jpg</code></small>
-      </footer>
+  <!-- Header -->
+  <header class="relative z-10 flex justify-between items-center p-6">
+    <h1 class="text-3xl font-extrabold tracking-tight">
+      🎧 Vibe<span class="text-pink-400">Stream</span>
+    </h1>
+    <div class="space-x-6 flex items-center">
+      <button id="prevBtn" class="modern-btn">⏮️</button>
+      <button id="playPauseBtn" class="modern-btn">▶️</button>
+      <button id="nextBtn" class="modern-btn">⏭️</button>
     </div>
+  </header>
+
+  <!-- Main Section -->
+  <main class="relative z-10 flex flex-col md:flex-row flex-1 w-full h-[calc(100vh-6rem)] gap-6 px-4 md:px-8 lg:px-20">
+
+    <!-- Player Section -->
+    <div class="w-full md:flex-1 flex flex-col bg-white/10 rounded-3xl shadow-2xl overflow-hidden">
+      <div id="player" class="w-full h-full"></div>
+      <div class="px-4 py-2">
+        <h2 id="trackTitle" class="text-2xl font-bold mt-2 text-center md:text-left">Loading...</h2>
+        <p id="trackMeta" class="text-slate-300 text-sm mb-2 text-center md:text-left">Fetching playlist...</p>
+      </div>
+    </div>
+
+    <!-- Playlist Sidebar -->
+    <div id="playlistContainer" class="w-full md:w-1/4 grid grid-cols-1 gap-4 overflow-y-auto max-h-[calc(100vh-6rem)]">
+      <!-- Playlist thumbnails injected by JS -->
+    </div>
+
   </main>
 
-  <script src="app.js" defer></script>
+  <!-- Footer -->
+  <footer class="relative z-10 text-center text-slate-400 text-sm py-6">
+    © 2025 VibeStream · Made with ❤️ by Dheeraj Singh
+  </footer>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="app.js"></script>
 </body>
 </html>
