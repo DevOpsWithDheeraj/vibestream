@@ -3,26 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎶 VibeStream</title>
+  <title>🎵 Chill Beats Music App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="app-container">
-    <h1 class="app-title">🎧 VibeStream</h1>
-    <p class="tagline">Feel the Rhythm. Live the Beat.</p>
+    <h1 class="app-title">🎧 Chill Beats Playlist</h1>
 
-    <div id="player"></div>
-
-    <button class="play-btn" onclick="playFirstSong()">▶ Play Now</button>
+    <div class="player">
+      <iframe id="player" width="560" height="315"
+        src="https://www.youtube.com/embed/?list=PLFgquLnL59alCl_2TQvOiD5Vgm1hCaGSI"
+        title="YouTube playlist"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
 
     <div class="playlist">
-      <h2>🎵 Your Playlist</h2>
+      <h2>Now Playing 🎶</h2>
       <ul id="playlist-list"></ul>
     </div>
   </div>
 
-  <script src="https://www.youtube.com/iframe_api"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
 
