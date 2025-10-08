@@ -1,56 +1,23 @@
-/* Animated gradient background */
-.animated-bg {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffee, #ff9900, #ff0066);
-  background-size: 400% 400%;
-  animation: gradientMove 15s ease infinite;
-  top: -50%;
-  left: -50%;
-  z-index: 0;
-  opacity: 0.4;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Buttons */
-.btn {
-  background: linear-gradient(90deg, #ff00cc, #3333ff);
-  border: none;
-  color: white;
-  padding: 0.6rem 1rem;
-  border-radius: 9999px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-.btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-}
-
-/* Playlist scrollbar */
-#playlistContainer {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.3) transparent;
-}
-#playlistContainer::-webkit-scrollbar {
-  width: 6px;
-}
-#playlistContainer::-webkit-scrollbar-thumb {
-  background-color: rgba(255,255,255,0.3);
-  border-radius: 3px;
-}
-
+/* Modern Buttons */
 .modern-btn {
   @apply text-5xl md:text-6xl p-6 md:p-8 bg-gradient-to-r from-pink-500 to-purple-500 
          rounded-full shadow-2xl text-white hover:scale-110 hover:shadow-pink-400/50 
          transition-transform duration-200 focus:outline-none;
 }
 
-
-
+/* Playlist Items */
+.playlist-item {
+  @apply flex items-center gap-3 p-3 bg-white/10 rounded-2xl hover:bg-pink-500/40 cursor-pointer transition duration-200;
+}
+.playlist-item img {
+  @apply w-16 h-16 rounded-xl object-cover shadow-md;
+}
+.playlist-item h3 {
+  @apply font-semibold text-white text-lg;
+}
+.playlist-item p {
+  @apply text-slate-300 text-sm;
+}
+.playlist-item.active {
+  @apply bg-pink-500/60;
+}
