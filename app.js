@@ -63,7 +63,7 @@ function renderPlaylist() {
     div.className =
       "group relative rounded-xl overflow-hidden shadow-lg cursor-pointer transform hover:scale-105 transition";
     div.innerHTML = `
-      <img src="${song.thumb}" class="w-full h-40 object-cover group-hover:opacity-70 transition"/>
+      <img src="${song.thumb}" class="w-full h-48 md:h-56 lg:h-64 object-cover group-hover:opacity-70 transition"/>
       <div class="absolute inset-0 flex items-center justify-center text-center opacity-0 group-hover:opacity-100 transition">
         <p class="text-sm font-semibold text-white bg-black/70 px-2 py-1 rounded">${song.title}</p>
       </div>
