@@ -1,11 +1,34 @@
-/* styles.css - small visual tweaks */
-.btn {
-  background: linear-gradient(90deg, rgba(99,102,241,0.12), rgba(59,130,246,0.06));
-  color: #e6eef8;
-  padding: 0.5rem 0.9rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.04);
-  font-weight: 600;
+/* Animated gradient background */
+.animated-bg {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffee, #ff9900, #ff0066);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  top: -50%;
+  left: -50%;
+  z-index: 0;
+  opacity: 0.4;
 }
-#playerWrapper { transition: transform .24s ease; }
-#playerWrapper:hover { transform: translateY(-6px) }
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Buttons */
+.btn {
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  border: none;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
