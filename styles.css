@@ -46,3 +46,8 @@
   border-radius: 3px;
 }
 
+.modern-btn {
+  @apply text-3xl md:text-4xl p-4 md:p-6 bg-pink-500 hover:bg-pink-600 text-white rounded-full shadow-lg transition-transform transform hover:scale-110 focus:outline-none;
+}
+
+
