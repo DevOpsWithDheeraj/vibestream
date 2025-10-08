@@ -1,0 +1,11 @@
+/* styles.css - small visual tweaks */
+.btn {
+  background: linear-gradient(90deg, rgba(99,102,241,0.12), rgba(59,130,246,0.06));
+  color: #e6eef8;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.04);
+  font-weight: 600;
+}
+#playerWrapper { transition: transform .24s ease; }
+#playerWrapper:hover { transform: translateY(-6px) }
