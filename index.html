@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VibeStream 🎧 </title>
+  <title>VibeStream 🎧 | English Hits</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="relative overflow-hidden text-white min-h-screen flex flex-col">
 
-  <!-- Animated Gradient Background -->
-  <div class="animated-bg"></div>
+  <!-- Background -->
   <img src="assets/bg-music.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40" />
   <div class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
 
   <!-- Header -->
-  <header class="relative z-10 flex justify-between items-center p-6">
+  <header class="relative z-10 flex justify-center p-6">
     <h1 class="text-3xl font-extrabold tracking-tight">
       🎧 Vibe<span class="text-pink-400">Stream</span>
     </h1>
@@ -32,28 +30,27 @@
         <p id="trackMeta" class="text-slate-300 text-sm mb-4">Fetching playlist...</p>
       </div>
 
-      <!-- Modern Controls -->
+      <!-- Controls -->
       <div class="flex justify-center items-center gap-10 mb-6">
-        <button id="prevBtn" class="modern-btn">⏮️</button>
-        <button id="playPauseBtn" class="modern-btn">▶️</button>
-        <button id="nextBtn" class="modern-btn">⏭️</button>
+        <button id="prevBtn" class="text-5xl md:text-6xl p-6 md:p-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full shadow-2xl text-white hover:scale-110 hover:shadow-pink-400/50 transition-transform duration-200 focus:outline-none">⏮️</button>
+        <button id="playPauseBtn" class="text-5xl md:text-6xl p-6 md:p-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full shadow-2xl text-white hover:scale-110 hover:shadow-pink-400/50 transition-transform duration-200 focus:outline-none">▶️</button>
+        <button id="nextBtn" class="text-5xl md:text-6xl p-6 md:p-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full shadow-2xl text-white hover:scale-110 hover:shadow-pink-400/50 transition-transform duration-200 focus:outline-none">⏭️</button>
       </div>
     </div>
 
     <!-- Playlist Sidebar -->
     <div id="playlistContainer" class="w-full md:w-1/4 flex flex-col gap-4 overflow-y-auto max-h-[calc(100vh-6rem)] p-4">
-      <!-- Playlist items injected by JS -->
+      <!-- JS injects playlist -->
     </div>
 
   </main>
 
   <!-- Footer -->
   <footer class="relative z-10 text-center text-slate-400 text-sm py-6">
-    © 2025 VibeStream · Made with ❤️ by Dheeraj Singh
+    © 2025 VibeStream · Streams from YouTube · Hosted on GitHub Pages by Dheeraj Singh
   </footer>
 
   <script src="https://www.youtube.com/iframe_api"></script>
   <script src="app.js"></script>
 </body>
 </html>
-
