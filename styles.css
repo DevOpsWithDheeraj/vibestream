@@ -33,7 +33,16 @@
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
+/* Playlist scrollbar */
 #playlistContainer {
-  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+#playlistContainer::-webkit-scrollbar {
+  width: 6px;
+}
+#playlistContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 3px;
 }
 
