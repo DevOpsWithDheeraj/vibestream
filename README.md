@@ -1,14 +1,35 @@
-# Fresh English Music — Static YouTube Streamer
+# 🎧 VibeStream
 
-This site streams a public YouTube playlist using an embedded YouTube player. Deploy to GitHub Pages.
+**VibeStream** is a sleek and modern music streaming web app built using **HTML**, **CSS**, and **JavaScript**.  
+It allows users to enjoy a curated playlist of superhit English songs with a clean and responsive interface.
 
-Default playlist: a public English hits playlist. The app reloads the embedded playlist every X minutes so newly added songs appear automatically.
+---
 
-## Deploy
-1. Create a repository on GitHub (e.g. `VibeStream`).
-2. Copy these files into the repo root and commit.
-3. Push to GitHub and enable GitHub Pages: Settings → Pages → Source → `main` branch `/ (root)`.
-4. Visit the published URL (GitHub will show it).
+## 🚀 Features
 
-No API keys required.
+- 🎵 Beautiful and minimalistic music player UI  
+- 📜 Sidebar playlist with clickable tracks  
+- ▶️ Play / Pause / Next / Previous controls  
+- 💖 Responsive design for desktop and mobile  
+- ⚡ Smooth animations and transitions  
+- 🌈 Built entirely with Vanilla JS, HTML, and CSS — no frameworks required
 
+---
+
+## 🧩 Tech Stack
+
+| Component | Technology |
+|------------|-------------|
+| Frontend | HTML5, CSS3, JavaScript |
+| Styling | Tailwind CSS |
+| Hosting | GitHub Pages |
+
+---
+
+## 📸 Preview
+
+![VibeStream Screenshot](./assets/vibestream-preview.png)
+
+*(Add your screenshot above once ready)*
+
+---
