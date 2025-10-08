@@ -36,7 +36,10 @@ function onPlayerStateChange(event) {
 
 // Fetch Playlist Info
 async function fetchPlaylist() {
-  const feed = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?playlist_id=${CONFIG.PLAYLIST_ID}`)}`;
+  const feed = `https://api.allorigins.win/raw?url=${encodeURIComponent(
+  `https://www.youtube.com/feeds/videos.xml?playlist_id=${CONFIG.PLAYLIST_ID}`
+)}`;
+
   try {
     const res = await fetch(feed);
     const text = await res.text();
