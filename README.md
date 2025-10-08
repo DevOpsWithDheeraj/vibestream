@@ -25,11 +25,3 @@ It allows users to enjoy a curated playlist of superhit English songs with a cle
 | Hosting | GitHub Pages |
 
 ---
-
-## 📸 Preview
-
-![VibeStream Screenshot](./assets/vibestream-preview.png)
-
-*(Add your screenshot above once ready)*
-
----
