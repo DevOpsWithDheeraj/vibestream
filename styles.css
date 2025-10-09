@@ -1,5 +1,5 @@
 /* Animated gradient background */
-.animated-bg {
+/*.animated-bg {
   position: absolute;
   width: 200%;
   height: 200%;
@@ -10,8 +10,7 @@
   left: -50%;
   z-index: 0;
   opacity: 0.4;
-}
-
+} */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
