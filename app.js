@@ -3,8 +3,13 @@
   AUTOPLAY: true
 }; */
 
-const CONFIG = {
+/*const CONFIG = {
   PLAYLIST_ID: "PLsQuyLqYpjSMF6bSX7C4W4e7YNqyXDHOM", // Your playlist
+  AUTOPLAY: true
+}; */
+
+const CONFIG = {
+  PLAYLIST_ID: "PLplXQ2cg9B_qrCVd1J_iId5SvP8Kf_BfS", // Your playlist
   AUTOPLAY: true
 };
 
