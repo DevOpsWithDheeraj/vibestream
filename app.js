@@ -42,9 +42,11 @@ function onPlayerReady() {
 }
 
 // Update title when video changes
-function onPlayerStateChange(event) {
+/*function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.PLAYING) updateTrackTitle();
-}
+} */
+
+
 
 // Fetch playlist via proxy and parse XML
 async function fetchPlaylist() {
