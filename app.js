@@ -86,7 +86,7 @@ async function fetchPlaylist() {
 }
 
 // Render playlist thumbnails
-function renderPlaylist() {
+/*function renderPlaylist() {
   const container = document.getElementById("playlistContainer");
   container.innerHTML = "";
   playlistItems.forEach((song, index) => {
@@ -107,6 +107,7 @@ function renderPlaylist() {
   highlightActiveSong(0); // Highlight first song initially
 }
 
+ 
 // Highlight currently playing song
 function highlightActiveSong(activeIndex) {
   const items = document.querySelectorAll("#playlistContainer > div");
@@ -114,6 +115,59 @@ function highlightActiveSong(activeIndex) {
     if (i === activeIndex) item.classList.add("bg-white/20");
     else item.classList.remove("bg-white/20");
   });
+}. */
+
+// Render only next 5 songs (including current)
+function renderPlaylist(currentIndex = 0) {
+  const container = document.getElementById("playlistContainer");
+  container.innerHTML = "";
+
+  // Get next 5 songs from current position
+  const visibleSongs = playlistItems.slice(currentIndex, currentIndex + 5);
+
+  visibleSongs.forEach((song, index) => {
+    const actualIndex = currentIndex + index;
+    const div = document.createElement("div");
+    div.className =
+      "group relative rounded-lg overflow-hidden shadow cursor-pointer flex items-center gap-3 transition hover:bg-white/10 p-2";
+    div.innerHTML = `
+      <img src="${song.thumb}" class="w-20 h-14 object-cover rounded-md flex-shrink-0"/>
+      <p class="text-sm font-semibold text-white line-clamp-2">${song.title}</p>
+    `;
+
+    // Click → play selected song
+    div.addEventListener("click", () => {
+      player.loadVideoById(song.videoId);
+      highlightActiveSong(actualIndex);
+    });
+
+    container.appendChild(div);
+  });
+}
+
+// Highlight active song and refresh next 5
+function highlightActiveSong(activeIndex) {
+  // Re-render sidebar with new window of songs
+  renderPlaylist(activeIndex);
+
+  const items = document.querySelectorAll("#playlistContainer > div");
+  items.forEach((item, i) => {
+    if (playlistItems[activeIndex + i]?.videoId === player.getVideoData().video_id) {
+      item.classList.add("bg-white/20");
+    } else {
+      item.classList.remove("bg-white/20");
+    }
+  });
+}
+
+// When player state changes (song changes)
+function onPlayerStateChange(event) {
+  if (event.data === YT.PlayerState.PLAYING) updateTrackTitle();
+  if (event.data === YT.PlayerState.ENDED) {
+    const data = player.getVideoData();
+    const currentIndex = playlistItems.findIndex((item) => item.videoId === data.video_id);
+    highlightActiveSong(currentIndex + 1); // move to next 5 songs
+  }
 }
 
 // Update title and meta
