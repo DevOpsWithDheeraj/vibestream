@@ -1,5 +1,10 @@
-const CONFIG = {
+/*const CONFIG = {
   PLAYLIST_ID: "PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj", // Your playlist
+  AUTOPLAY: true
+}; */
+
+const CONFIG = {
+  PLAYLIST_ID: "PLsQuyLqYpjSMF6bSX7C4W4e7YNqyXDHOM", // Your playlist
   AUTOPLAY: true
 };
 
