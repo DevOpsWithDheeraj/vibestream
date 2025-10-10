@@ -45,7 +45,7 @@
   border-radius: 3px;
 }
 
-
 footer {
-  flex-shrink: 0;
+  position: relative;
+  z-index: 10; /* ensure above animated background */
 }
