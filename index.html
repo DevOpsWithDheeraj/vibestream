@@ -19,31 +19,20 @@
     <h1 class="text-3xl font-extrabold tracking-tight">
       🎧 Vibe<span class="text-pink-400">Stream</span>
     </h1>
-    
   </header>
 
-  <!-- Main Section -->
-  <main class="relative z-10 flex flex-col md:flex-row flex-1 w-full gap-6 px-4 md:px-8 lg:px-20">
-    
-    <!-- Player Section -->
-    <div class="w-full md:flex-1 flex flex-col bg-white/10 rounded-3xl shadow-2xl overflow-hidden">
-      <div id="player" class="w-full h-full"></div>
-      <div class="px-4 py-2">
-        <h2 id="trackTitle" class="text-2xl font-bold mt-2 text-center md:text-left">Loading...</h2>
-        <p id="trackMeta" class="text-slate-300 text-sm mb-2 text-center md:text-left">Fetching playlist...</p>
-      </div>
+  <!-- Main Section (Player Centered) -->
+  <main class="relative z-10 flex justify-center items-center flex-1 w-full px-4 md:px-8 lg:px-20">
+    <div class="w-full md:w-2/3 lg:w-1/2 flex flex-col bg-white/10 rounded-3xl shadow-2xl overflow-hidden text-center p-6">
+      <div id="player" class="w-full aspect-video rounded-xl overflow-hidden"></div>
+      <h2 id="trackTitle" class="text-2xl font-bold mt-4">Loading...</h2>
+      <p id="trackMeta" class="text-slate-300 text-sm mb-2">Fetching playlist...</p>
     </div>
-
-    <!-- Playlist Sidebar -->
-    <div id="playlistContainer" class="w-full md:w-1/4 grid grid-cols-1 gap-4 overflow-y-auto max-h-[calc(100vh-6rem)]">
-      <!-- Playlist thumbnails injected by JS -->
-    </div>
-
   </main>
 
   <!-- Footer -->
   <footer class="relative z-10 text-center text-slate-400 text-sm py-6 flex-shrink-0">
-  © 2025 VibeStream · Made with 🩷 by Dheeraj Singh
+    © 2025 VibeStream · Made with 🩷 by Dheeraj Singh
   </footer>
 
   <script src="https://www.youtube.com/iframe_api"></script>
