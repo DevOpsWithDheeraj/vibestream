@@ -2,7 +2,6 @@
 
 **VibeStream** is a sleek and modern music streaming web app built using **HTML**, **CSS**, and **JavaScript**.  
 It allows users to enjoy a curated playlist of superhit English songs with a clean and responsive interface.
-
 ---
 
 ## 🚀 Features
